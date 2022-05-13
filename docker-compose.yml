@@ -9,6 +9,8 @@ services:
   kafka:
     image: 'bitnami/kafka:latest'
     container_name: 'kafka'
+    volumes:
+      - "kafka_data:/bitnami/kafka"
     ports:
       - '9092:9092'
     environment:
@@ -19,3 +21,6 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+
+volumes:
+  kafka_data:
